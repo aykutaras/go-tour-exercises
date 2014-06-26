@@ -1,7 +1,6 @@
 package gotourexercises
 
 import (
-    "code.google.com/p/go-tour/pic"
     "image"
     "image/color"
 )
@@ -21,9 +20,4 @@ func (img Image) ColorModel() color.Model {
 func (img Image) At(x int, y int) color.Color {
     v := uint8((x+y)/2)
     return color.RGBA{v, v, 255, 255}
-}
-
-func main() {
-    m := Image{255,255}
-    pic.ShowImage(m)
 }

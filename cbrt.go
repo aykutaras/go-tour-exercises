@@ -1,9 +1,6 @@
 package gotourexercises
 
-import (
-    "fmt"
-    "math/cmplx"
-)
+import "math/cmplx"
 
 func Cbrt(x complex128) complex128 {
     z := x
@@ -15,8 +12,4 @@ func Cbrt(x complex128) complex128 {
     }
     
     return z
-}
-
-func main() {
-    fmt.Println(Cbrt(2))
 }
