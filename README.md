@@ -13,6 +13,5 @@ Files and related exercises are below.
 * #60 HTTP Handlers -> httpHandlers.go & httpHandlers_test.go
 * #62 Images -> image.go & image_test.go
 * #63 Rot13 Reader -> rot13Reader.go & rot13Reader_test.go
-* #71 Equivalent Binary Trees
-* #72 Equivalent Binary Trees
-* #73 Web Crawler
+* #72 Equivalent Binary Trees -> btree.go & btree_test.go
+* #73 Web Crawler -> webcrawler.go & webcrawler_test.go
