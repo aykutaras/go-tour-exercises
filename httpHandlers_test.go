@@ -1,26 +1,42 @@
 package gotourexercises
 
 import (
-	"fmt"
+	"io/ioutil"
 	"net/http"
+	"net/http/httptest"
 	"testing"
 )
 
-func PrepareHandlers() {
-	// your http.Handle calls here
-	http.Handle("/string", String("I'm a frayed knot."))
-	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
-	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", r.URL.Query()["code"])
-	})
-}
+func TestStringHttpHandler(t *testing.T) {
+	ts := httptest.NewServer(http.Handler(String("I'm a frayed knot.")))
+	defer ts.Close()
 
-func TestHttpHandler(t *testing.T) {
-	PrepareHandlers()
-
-	err := http.ListenAndServe("localhost:4001", nil)
+	res, err := http.Get(ts.URL)
 	if err != nil {
 		t.Errorf("Something went wrong: %v", err)
 	}
 
+	body, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
+
+	if string(body) != "I'm a frayed knot." {
+		t.Errorf("Wrong response  %s", body)
+	}
+}
+
+func TestStructHttpHandler(t *testing.T) {
+	ts := httptest.NewServer(http.Handler(&Struct{"Hello", ":", "Gophers!"}))
+	defer ts.Close()
+
+	res, err := http.Get(ts.URL)
+	if err != nil {
+		t.Errorf("Something went wrong: %v", err)
+	}
+
+	body, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
+
+	if string(body) != "&{Hello : Gophers!}" {
+		t.Errorf("Wrong response  %s", body)
+	}
 }
