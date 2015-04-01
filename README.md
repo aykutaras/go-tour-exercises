@@ -1,6 +1,7 @@
 Go Tour Exercises
 =================
 
+[![Build Status](https://drone.io/github.com/aykutaras/go-tour-exercises/status.png)](https://drone.io/github.com/aykutaras/go-tour-exercises/latest)
 These are the solutions I made for [Go Tour](http://tour.golang.org/) tutorial. 
 Files and related exercises are below.
 
